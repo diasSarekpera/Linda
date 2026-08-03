@@ -1,0 +1,30 @@
+/* =========================================================================
+   FOOTER.CSS — pied de page
+   ========================================================================= */
+
+.profil-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+
+  width: 100%;
+  max-width: var(--profil-largeur-max);
+  margin: auto auto 0;
+  padding: var(--profil-gap-l) var(--profil-padding-x);
+
+  background: var(--profil-color-bg);
+  border: 1px solid var(--profil-color-border);
+  border-radius: 0;
+  text-align: center;
+}
+
+.profil-footer p {
+  font-size: 0.85rem;
+  color: var(--profil-color-text-secondary);
+}
+
+.profil-footer-secondaire {
+  color: var(--profil-color-text-muted);
+  font-size: 0.8rem;
+}

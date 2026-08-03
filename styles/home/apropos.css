@@ -1,0 +1,47 @@
+/* =========================================================================
+   APROPOS.CSS — section "À propos de moi"
+   ========================================================================= */
+
+.profil-apropos-texte {
+  max-width: var(--profil-mesure-lecture);
+  font-size: clamp(1.05rem, 0.95rem + 0.5vw, 1.3rem);
+  font-weight: 400;
+  line-height: 1.55;
+  color: var(--profil-color-text);
+}
+
+.profil-apropos-secondaire {
+  max-width: var(--profil-mesure-lecture);
+  font-size: 1rem;
+  line-height: 1.55;
+  color: var(--profil-color-text-secondary);
+}
+
+/* Surlignage façon "highlighter" jaune sur une portion de texte */
+.profil-surligne {
+  background-color: var(--profil-color-highlight-bg);
+  padding: 0.05em 0.3em;
+  border-radius: 3px;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+.profil-badges {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: var(--profil-gap-s);
+
+  list-style: none;
+}
+
+.profil-badges li {
+  padding: 6px 14px;
+  border-radius: var(--profil-radius-pill);
+  border: 1px solid var(--profil-color-border-strong);
+  background: #ffffff;
+  color: var(--profil-color-text);
+  font-size: 0.9rem;
+  font-weight: 400;
+  white-space: nowrap;
+}

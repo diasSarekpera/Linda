@@ -1,0 +1,78 @@
+/* =========================================================================
+   CARTE.CSS — scaffolding commun à toutes les sections de la carte profil
+   ========================================================================= */
+
+.profil-card,
+.profil-footer {
+  font-family: var(--profil-font-base);
+  color: var(--profil-color-text);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* NB : pas de "color: inherit" générique sur .profil-card a — chaque lien
+   (bouton, badge, tag) définit déjà sa propre couleur explicitement.
+   Une règle générale ici aurait une spécificité plus forte que ".profil-btn-contact"
+   et écraserait le blanc du bouton par erreur. */
+
+/* Conteneur principal : simple colonne, chaque section est sa propre carte
+   séparée par un espace identique et cohérent (fidèle à la maquette empilée) */
+.profil-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--profil-gap-s);
+
+  width: 100%;
+  max-width: var(--profil-largeur-max);
+  margin: 0 auto;
+}
+
+/* Chaque bloc (bannière + About / Featured / Experience / Education / …)
+   est une carte indépendante : fond blanc, bordure fine, coins droits. */
+.profil-banniere,
+.profil-bloc {
+  background: var(--profil-color-bg);
+  border: 1px solid var(--profil-color-border);
+  border-radius: 0;
+  overflow: hidden;
+}
+
+/* La bannière hero est toujours la toute première carte de la page :
+   pas de bordure en haut ni sur les côtés, pour qu'elle soit parfaitement
+   collée aux bords de l'écran (surtout visible en mobile, où le filet
+   latéral longeait l'image). On garde seulement la bordure du bas, qui
+   sépare la bannière de la carte suivante. */
+.profil-banniere {
+  border-top: none;
+  border-left: none;
+  border-right: none;
+}
+
+/* Chaque section (About / Featured / Experience / Education / …) partage
+   le même rythme horizontal et vertical. */
+.profil-bloc {
+  display: flex;
+  flex-direction: column;
+  gap: var(--profil-gap-m);
+
+  padding: var(--profil-gap-l) var(--profil-padding-x);
+}
+
+/* Label "eyebrow" utilisé en tête de chaque section */
+.profil-eyebrow {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--profil-color-text-muted);
+}
+
+.profil-eyebrow-secondaire {
+  margin-top: var(--profil-gap-s);
+}
+
+/* État focus clavier, spécifique aux liens/boutons de la carte */
+.profil-card a:focus-visible,
+.profil-card button:focus-visible {
+  outline: 2px solid var(--profil-color-link);
+  outline-offset: 2px;
+}

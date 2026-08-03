@@ -1,0 +1,43 @@
+/* =========================================================================
+   MOTION.CSS — Motion Design System : apparitions au scroll (reveal)
+   =========================================================================
+
+   Principe de progressive enhancement :
+   Par défaut (sans cette classe), tout le contenu est visible normalement.
+   C'est motion.js qui pose ".motion-armed" sur <html> — uniquement si
+   IntersectionObserver est supporté ET si l'utilisateur n'a pas demandé
+   de réduire les animations. Un site sans JS, ou un navigateur ancien,
+   ou une préférence d'accessibilité : le contenu reste simplement visible,
+   sans jamais rester bloqué en opacity: 0.
+
+   Seules transform/opacity sont animées (performant, pas de repaint layout).
+
+   Le "double requestAnimationFrame" côté motion.js garantit que la
+   transition ci-dessous est toujours perceptible, même quand une section
+   est déjà dans le viewport au moment où elle est observée (position de
+   scroll restaurée après un rechargement, page courte, etc.) — voir le
+   commentaire en tête de motion.js pour le détail du problème corrigé.
+   ========================================================================= */
+
+/* Direction de l'apparition : pilotée par variables CSS plutôt que par des
+   classes JS. Chaque section peut redéfinir --motion-x / --motion-y /
+   --motion-scale sur ses propres .motion-stagger-item (dans SON fichier CSS)
+   pour varier fade-up / fade-latéral / scale-in, sans toucher au moteur
+   ci-dessous ni au HTML. Fallback : identique au comportement d'origine
+   (fade + léger déplacement vers le haut). */
+.motion-armed .motion-stagger-item {
+  opacity: 0;
+  transform:
+    translate(var(--motion-x, 0), var(--motion-y, 16px))
+    scale(var(--motion-scale, 1));
+
+  transition:
+    opacity var(--motion-duration-enter) var(--motion-ease-out),
+    transform var(--motion-duration-enter) var(--motion-ease-out);
+  transition-delay: calc(var(--i, 0) * var(--motion-stagger-step));
+}
+
+.motion-armed .is-visible .motion-stagger-item {
+  opacity: 1;
+  transform: translate(0, 0) scale(1);
+}

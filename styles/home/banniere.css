@@ -33,7 +33,7 @@
   border-radius: 50%;
 
   margin-top: calc(var(--profil-avatar-taille) / -2);
-  border: 4px solid #ffffff;
+  border: var(--profil-avatar-bordure) solid #ffffff;
   background-color: var(--profil-color-pill-bg);
 }
 
@@ -48,8 +48,8 @@
 .profil-avatar-wrap::after {
   content: "";
   position: absolute;
-  top: calc((var(--profil-avatar-taille) - 8px) * 0.85355 - 7.5px);
-  left: calc((var(--profil-avatar-taille) - 8px) * 0.85355 - 7.5px);
+  top: calc(var(--profil-avatar-taille) * 0.85355 - 7.5px - var(--profil-avatar-bordure));
+  left: calc(var(--profil-avatar-taille) * 0.85355 - 7.5px - var(--profil-avatar-bordure));
 
   width: 15px;
   height: 15px;

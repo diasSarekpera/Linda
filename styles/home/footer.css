@@ -8,9 +8,6 @@
   align-items: center;
   gap: 4px;
 
-  width: 100%;
-  max-width: var(--profil-largeur-max);
-  margin: auto auto 0;
   padding: var(--profil-gap-l) var(--profil-padding-x);
 
   background: var(--profil-color-bg);

@@ -23,6 +23,7 @@
   --profil-gap-m: clamp(14px, 3vw, 24px);
   --profil-gap-l: clamp(24px, 5vw, 48px);
   --profil-avatar-taille: clamp(84px, 22vw, 128px);
+  --profil-avatar-bordure: 4px;
   --profil-banniere-hauteur: clamp(120px, 26vw, 220px);
 
   /* Longueur de ligne confortable pour les blocs de texte longs (À propos) */

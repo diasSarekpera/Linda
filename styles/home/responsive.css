@@ -25,6 +25,18 @@
 }
 
 /* -------------------------------------------------------------------------
+   ≤ 560px — Icônes réseaux + bouton de contact : groupés côte à côte sur
+   desktop (cf. banniere.css), mais réécartés aux deux extrémités de la
+   ligne sur mobile pour rester faciles à atteindre au pouce sans se
+   chevaucher, une fois l'avatar/le nom repassés au-dessus en pleine largeur.
+   ------------------------------------------------------------------------- */
+@media (max-width: 560px) {
+  .profil-actions {
+    justify-content: space-between;
+  }
+}
+
+/* -------------------------------------------------------------------------
    ≤ 480px — Formation : la timeline desktop (colonne de date fixe + puce +
    ligne verticale + contenu, sur une seule ligne) écrase le contenu quand
    la carte descend sous ~350px de largeur utile. On restructure en liste

@@ -145,7 +145,11 @@
   flex-direction: row;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between;
+  /* Desktop : icônes réseaux et bouton de contact groupés côte à côte,
+     alignés à droite (comportement par défaut, "mobile-first" inversé —
+     ce fichier documente ses breakpoints en max-width, cf. responsive.css).
+     Sur mobile, ce groupe est réécarté en space-between, cf. responsive.css. */
+  justify-content: flex-end;
   gap: var(--profil-gap-m);
 
   flex: 1 1 240px;

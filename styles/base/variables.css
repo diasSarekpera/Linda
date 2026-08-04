@@ -11,7 +11,7 @@
   --heading-color: #1E211F;
   --background-light: #F6F4EF;
   --background-white: #fff;
-  --font-main: 'Poppins', Arial, sans-serif;
+  --font-main: 'Montserrat', Arial, sans-serif;
 
   /* --- Structure de la carte profil (page Home) ---
      Les dimensions clés sont fluides (clamp) : elles se réduisent en continu
@@ -30,8 +30,8 @@
   --profil-mesure-lecture: 68ch;
 
   /* --- Typographie de la carte profil --- */
-  --profil-font-base: 'Jost', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --profil-font-heading: 'Marcellus', Georgia, 'Times New Roman', serif;
+  --profil-font-base: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --profil-font-heading: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 
   /* --- Palette du site : 5 couleurs, pas une de plus ---
      Blanc pur / Vert émeraude / Blanc cassé / Noir doux / Gris

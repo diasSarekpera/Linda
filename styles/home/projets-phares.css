@@ -1,0 +1,133 @@
+/* =========================================================================
+   PROJETS-PHARES.CSS — section "Projets phares" (featured work)
+   ========================================================================= */
+
+.profil-projets-phares .profil-bloc-entete {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--profil-gap-m);
+
+  padding-bottom: var(--profil-gap-m);
+}
+
+.profil-btn-outline {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+
+  min-height: 44px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: 1px solid var(--profil-color-border-strong);
+  background: #ffffff;
+  box-shadow: 0 0 0 rgba(30, 33, 31, 0);
+
+  font-size: 0.95rem;
+  font-weight: 500;
+  white-space: nowrap;
+  text-decoration: none;
+  color: var(--profil-color-text);
+
+  transition:
+    background-color var(--motion-duration-fast) var(--motion-ease-standard),
+    border-color var(--motion-duration-fast) var(--motion-ease-standard),
+    box-shadow var(--motion-duration-fast) var(--motion-ease-standard),
+    transform var(--motion-duration-fast) var(--motion-ease-standard);
+}
+
+.profil-btn-outline:hover {
+  background: var(--profil-color-pill-bg);
+}
+
+.profil-btn-outline:active {
+  transform: scale(0.98);
+}
+
+.profil-projets-grille {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--profil-gap-l) var(--profil-gap-m);
+
+  /* Motion : rythme propre à cette grille. Le pas global (70ms, pensé pour
+     les petites listes comme les badges "Services") est trop rapproché pour
+     4 cartes — les fenêtres d'apparition se chevauchent et donnent
+     l'impression que tout arrive d'un coup. Un pas plus large + une entrée
+     un peu plus longue font lire clairement "une carte, puis l'autre",
+     ligne par ligne, sans brutalité.
+     Avec 2 colonnes, --i suit l'ordre du DOM (0,1 = ligne 1 / 2,3 = ligne 2) :
+     un pas de 220ms donne 0 / 220 / 440 / 660ms, assez espacé pour bien
+     percevoir "ligne 1 (carte à carte), puis ligne 2 (carte à carte)". */
+  --motion-stagger-step: 220ms;
+  --motion-duration-enter: 700ms;
+}
+
+.profil-projet-carte {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  /* légère élévation au survol : discrète, sans ombre artificielle sur un
+     bloc qui n'a pas de fond propre (pas de "fausse carte") */
+  transition: transform var(--motion-duration-fast) var(--motion-ease-standard);
+}
+
+.profil-projet-carte:hover {
+  transform: translateY(-3px);
+}
+
+/* --- Motion : chaque carte glisse depuis le côté opposé à sa colonne
+   (gauche/droite), pour un rendu moins "uniforme" qu'un simple fade-up.
+   Restreint à >560px : en dessous, la grille repasse à 1 colonne
+   (voir responsive.css) et un simple fade-up est plus lisible. --- */
+@media (min-width: 561px) {
+  .profil-projets-grille .motion-stagger-item:nth-child(odd) {
+    --motion-x: -20px;
+    --motion-y: 0;
+  }
+
+  .profil-projets-grille .motion-stagger-item:nth-child(even) {
+    --motion-x: 20px;
+    --motion-y: 0;
+  }
+}
+
+/* Cadre qui contient le zoom d'image au survol sans déborder du rayon arrondi */
+.profil-projet-media {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: var(--profil-radius-image);
+  overflow: hidden;
+}
+
+.profil-projet-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+
+  transition: transform var(--motion-duration-state) var(--motion-ease-standard);
+}
+
+.profil-projet-carte:hover .profil-projet-media img {
+  transform: scale(1.05);
+}
+
+.profil-projet-carte h3 {
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--profil-color-text);
+  transition: color var(--motion-duration-fast) var(--motion-ease-standard);
+}
+
+.profil-projet-carte:hover h3 {
+  color: var(--profil-color-accent);
+}
+
+.profil-projet-carte p {
+  font-size: 0.9rem;
+  color: var(--profil-color-text-secondary);
+}

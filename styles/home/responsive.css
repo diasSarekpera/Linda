@@ -1,0 +1,80 @@
+/* =========================================================================
+   RESPONSIVE.CSS — décisions structurelles par breakpoint
+   ========================================================================= */
+
+/*
+  Ce fichier ne gère volontairement PAS l'espacement, les tailles d'avatar/
+  bannière ni la typographie : ces valeurs sont fluides (clamp) et définies
+  une seule fois dans variables.css / chaque fichier de section. Elles
+  s'adaptent en continu entre 320px et 1000px sans à-coup de breakpoint.
+
+  Ce fichier ne contient que les vraies réorganisations de mise en page :
+  des cas où la structure desktop ne fonctionne plus en dessous d'une
+  certaine largeur et doit être repensée, pas juste rétrécie.
+*/
+
+/* -------------------------------------------------------------------------
+   ≤ 560px — Projets phares : la grille 2x2 devient illisible en dessous de
+   cette largeur (cartes trop étroites, texte compressé). On repasse en une
+   seule colonne pleine largeur, empilant les 4 cartes verticalement.
+   ------------------------------------------------------------------------- */
+@media (max-width: 560px) {
+  .profil-projets-grille {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* -------------------------------------------------------------------------
+   ≤ 560px — Icônes réseaux + bouton de contact : groupés côte à côte sur
+   desktop (cf. banniere.css), mais réécartés aux deux extrémités de la
+   ligne sur mobile pour rester faciles à atteindre au pouce sans se
+   chevaucher, une fois l'avatar/le nom repassés au-dessus en pleine largeur.
+   ------------------------------------------------------------------------- */
+@media (max-width: 560px) {
+  .profil-actions {
+    justify-content: space-between;
+  }
+}
+
+/* -------------------------------------------------------------------------
+   ≤ 480px — Formation : la timeline desktop (colonne de date fixe + puce +
+   ligne verticale + contenu, sur une seule ligne) écrase le contenu quand
+   la carte descend sous ~350px de largeur utile. On restructure en liste
+   verticale : un simple repère de couleur à gauche, la date en petit label
+   au-dessus du titre plutôt que dans une colonne de largeur fixe.
+   Ce n'est pas une simple réduction de taille : c'est une autre mise en
+   page, mieux adaptée à la lecture verticale sur mobile.
+   ------------------------------------------------------------------------- */
+@media (max-width: 480px) {
+  .profil-formation-item {
+    flex-wrap: wrap;
+    row-gap: 4px;
+
+    padding-left: 16px;
+    border-left: 2px solid var(--profil-color-border-strong);
+  }
+
+  /* La puce + sa ligne verticale n'ont plus de sens : le repère de couleur
+     est désormais porté par la bordure gauche de chaque item. */
+  .profil-formation-puce {
+    display: none;
+  }
+
+  .profil-formation-date {
+    order: -1;
+    flex: 1 1 100%;
+    text-align: left;
+    font-weight: 500;
+  }
+
+  .profil-formation-contenu {
+    flex: 1 1 100%;
+  }
+
+  /* La couleur du repère latéral reprend la couleur déjà assignée à la date
+     (une seule variable par ligne, cf. formation.css) : pas de nouvelle
+     couleur inventée pour le mobile. */
+  .profil-formation-item:nth-child(1) { border-left-color: var(--profil-color-edu-1); }
+  .profil-formation-item:nth-child(2) { border-left-color: var(--profil-color-edu-2); }
+  .profil-formation-item:nth-child(3) { border-left-color: var(--profil-color-edu-3); }
+}

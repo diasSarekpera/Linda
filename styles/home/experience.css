@@ -1,0 +1,118 @@
+/* =========================================================================
+   EXPERIENCE.CSS — section "Expérience"
+   ========================================================================= */
+
+/* Titre de section + séparateur horizontal, fidèle à la maquette */
+.profil-experience > .profil-eyebrow {
+  padding-bottom: var(--profil-gap-m);
+}
+
+.profil-experience-item {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: var(--profil-gap-m);
+
+  padding-bottom: var(--profil-gap-l);
+  border-bottom: 1px dashed var(--profil-color-border);
+}
+
+.profil-experience-item:last-child {
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+/* Motion : entrée depuis la gauche, cohérente avec la lecture d'une timeline */
+.profil-experience-item {
+  --motion-x: -20px;
+  --motion-y: 0;
+}
+
+/* Icône "logo" : glyphe seul, sans boîte ni fond (fidèle à la maquette) */
+.profil-experience-icone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  margin-top: 2px;
+
+  color: var(--profil-color-text);
+  font-size: 1.2rem;
+
+  transition:
+    color var(--motion-duration-fast) var(--motion-ease-standard),
+    transform var(--motion-duration-fast) var(--motion-ease-standard);
+}
+
+.profil-experience-item:hover .profil-experience-icone {
+  color: var(--profil-color-accent);
+  transform: scale(1.12);
+}
+
+.profil-experience-contenu {
+  display: flex;
+  flex-direction: column;
+  gap: var(--profil-gap-s);
+
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.profil-experience-ligne {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--profil-gap-s);
+}
+
+/* Intitulé de poste : mesuré à l'échantillonnage comme noir/gris foncé
+   sur la maquette (pas de vert/teal) */
+.profil-experience-ligne h3 {
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.35;
+  flex: 1 1 220px;
+  color: var(--profil-color-text);
+}
+
+.profil-tag-date {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  padding: 4px 12px;
+  border-radius: var(--profil-radius-pill);
+  border: none;
+  background: var(--profil-color-pill-bg);
+  color: var(--profil-color-text-secondary);
+
+  font-size: 0.85rem;
+  font-weight: 400;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.profil-tag-date i {
+  font-size: 0.78rem;
+  color: var(--profil-color-text-muted);
+}
+
+.profil-experience-contenu ul {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  padding-left: 18px;
+  font-size: 0.95rem;
+  line-height: 1.45;
+  color: var(--profil-color-text-secondary);
+}
+
+.profil-experience-contenu ul li::marker {
+  color: var(--profil-color-link);
+}

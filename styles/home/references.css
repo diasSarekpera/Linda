@@ -1,0 +1,73 @@
+/* =========================================================================
+   REFERENCES.CSS — section "Références professionnelles"
+   ========================================================================= */
+
+.profil-references > .profil-eyebrow {
+  padding-bottom: var(--profil-gap-m);
+}
+
+.profil-references-grille {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--profil-gap-l);
+}
+
+.profil-reference-item {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: var(--profil-gap-m);
+}
+
+/* Motion : alternance gauche/droite, en écho à la grille de projets phares */
+.profil-references-grille .motion-stagger-item:nth-child(odd) {
+  --motion-x: -20px;
+  --motion-y: 0;
+}
+
+.profil-references-grille .motion-stagger-item:nth-child(even) {
+  --motion-x: 20px;
+  --motion-y: 0;
+}
+
+.profil-reference-icone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  margin-top: 2px;
+
+  color: var(--profil-color-text);
+  font-size: 1.2rem;
+
+  transition:
+    color var(--motion-duration-fast) var(--motion-ease-standard),
+    transform var(--motion-duration-fast) var(--motion-ease-standard);
+}
+
+.profil-reference-item:hover .profil-reference-icone {
+  color: var(--profil-color-accent);
+  transform: scale(1.12);
+}
+
+.profil-reference-contenu h3 {
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.35;
+  color: var(--profil-color-text);
+}
+
+.profil-reference-contenu p {
+  font-size: 0.9rem;
+  color: var(--profil-color-text-secondary);
+}
+
+.profil-references-note {
+  margin-top: var(--profil-gap-l);
+  font-size: 0.85rem;
+  font-style: italic;
+  color: var(--profil-color-text-muted);
+}

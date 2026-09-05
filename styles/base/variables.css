@@ -1,0 +1,98 @@
+/* =========================================================================
+   VARIABLES.CSS — variables communes à tout le site
+   ========================================================================= */
+
+:root {
+  /* --- Palette générale du site (héritée) --- */
+  --primary-color: #2456C7;
+  --secondary-color: #2456C7;
+  --primary-hover-color: #1B429E;
+  --text-color: #1E211F;
+  --heading-color: #1E211F;
+  --background-light: #F6F4EF;
+  --background-white: #fff;
+  --font-main: 'Montserrat', Arial, sans-serif;
+
+  /* --- Structure de la carte profil (page Home) ---
+     Les dimensions clés sont fluides (clamp) : elles se réduisent en continu
+     entre 320px et 1000px de viewport, sans à-coups de breakpoint. Le média
+     query à 480px ne gère donc plus l'espacement, seulement la structure. */
+  --profil-largeur-max: 1000px;
+  --profil-padding-x: clamp(16px, 4.5vw, 48px);
+  --profil-gap-s: clamp(8px, 1.5vw, 12px);
+  --profil-gap-m: clamp(14px, 3vw, 24px);
+  --profil-gap-l: clamp(24px, 5vw, 48px);
+  --profil-avatar-taille: clamp(84px, 22vw, 128px);
+  --profil-avatar-bordure: 4px;
+  --profil-banniere-hauteur: clamp(120px, 26vw, 220px);
+
+  /* Longueur de ligne confortable pour les blocs de texte longs (À propos) */
+  --profil-mesure-lecture: 68ch;
+
+  /* --- Typographie de la carte profil --- */
+  --profil-font-base: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --profil-font-heading: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+  /* --- Palette du site : 5 couleurs, pas une de plus ---
+     Blanc pur / Vert émeraude / Blanc cassé / Noir doux / Gris
+     Les valeurs ci-dessous ne sont QUE des nuances (tint/shade) de ces 5 couleurs,
+     nécessaires pour les états (hover), les fonds subtils et les bordures. */
+
+  /* Blanc pur */
+  --profil-color-bg: #ffffff;
+
+  /* Blanc cassé (fond de page + fonds subtils) */
+  --profil-color-page-bg: #F6F4EF;
+  --profil-color-pill-bg: #F0EEE6;       /* pastilles neutres (date tag, coming soon) */
+
+  /* Gris (texte secondaire + bordures, nuances du même gris) */
+  --profil-color-border: #E8E6DD;
+  --profil-color-border-strong: #D9D7CC;
+  --profil-color-text-secondary: #6E7168; /* paragraphes / puces */
+  --profil-color-text-muted: #9A9C93;     /* dates neutres, légendes */
+
+  /* Noir doux (titres, texte principal) */
+  --profil-color-text: #1E211F;
+
+  /* Bleu (unique couleur d'accent du site, avec ses nuances) */
+  --profil-color-accent: #2456C7;
+  --profil-color-accent-hover: #1B429E;
+  --profil-color-accent-light: #DDE7FB;  /* surlignage, fonds discrets */
+
+  /* Rôles fonctionnels : tous mappés sur l'accent émeraude (une seule couleur d'accent) */
+  --profil-color-role: var(--profil-color-accent);
+  --profil-color-link: var(--profil-color-accent);
+  --profil-color-soon: var(--profil-color-text-secondary);
+  --profil-color-highlight-bg: var(--profil-color-accent-light);
+  --profil-color-online: var(--profil-color-accent);
+
+  /* Timeline Formation : uniforme en émeraude (plus de code couleur arbitraire) */
+  --profil-color-edu-1: var(--profil-color-accent);
+  --profil-color-edu-2: var(--profil-color-accent);
+  --profil-color-edu-3: var(--profil-color-accent);
+  --profil-color-edu-4: var(--profil-color-accent);
+
+  --profil-color-cta-bg: #1E211F;
+  --profil-color-cta-bg-hover: #1B429E;
+  --profil-color-cta-text: #ffffff;
+
+  /* --- Rayons --- */
+  --profil-radius-image: 6px;
+  --profil-radius-pill: 999px;
+
+  /* =======================================================================
+     MOTION DESIGN SYSTEM — durées et courbes communes à tout le projet.
+     Toute animation/transition du site doit référencer ces tokens plutôt
+     que des valeurs en dur, pour garantir un seul langage de mouvement.
+     ======================================================================= */
+
+  /* Durées */
+  --motion-duration-fast: 180ms;    /* hover, focus, feedback immédiat */
+  --motion-duration-state: 240ms;   /* changements d'état (validation, ouverture) */
+  --motion-duration-enter: 650ms;   /* apparitions (fade up, reveal) */
+  --motion-stagger-step: 110ms;     /* décalage entre éléments d'une même liste */
+
+  /* Courbes */
+  --motion-ease-standard: cubic-bezier(0.4, 0, 0.2, 1);  /* hover/focus, symétrique */
+  --motion-ease-out: cubic-bezier(0.16, 1, 0.3, 1);      /* apparitions, décélération franche */
+}

@@ -1,0 +1,283 @@
+/* =========================================================================
+   BANNIERE.CSS — bannière de couverture + identité (avatar, nom, actions)
+   ========================================================================= */
+
+.profil-banniere {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.profil-banniere-img {
+  width: 100%;
+  height: var(--profil-banniere-hauteur);
+  object-fit: cover;
+  display: block;
+}
+
+.profil-identite {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  padding: 0 var(--profil-padding-x) var(--profil-gap-l);
+}
+
+/* Avatar : anneau blanc + pastille "en ligne", remonté sur la bannière */
+.profil-avatar-wrap {
+  position: relative;
+  flex-shrink: 0;
+
+  width: var(--profil-avatar-taille);
+  height: var(--profil-avatar-taille);
+  border-radius: 50%;
+
+  margin-top: calc(var(--profil-avatar-taille) / -2);
+  border: var(--profil-avatar-bordure) solid #ffffff;
+  background-color: var(--profil-color-pill-bg);
+}
+
+.profil-avatar {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
+
+.profil-avatar-wrap::after {
+  content: "";
+  position: absolute;
+  top: calc(var(--profil-avatar-taille) * 0.85355 - 7.5px - var(--profil-avatar-bordure));
+  left: calc(var(--profil-avatar-taille) * 0.85355 - 7.5px - var(--profil-avatar-bordure));
+
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+
+  background-color: var(--profil-color-online);
+  border: 2.5px solid #ffffff;
+}
+
+/* Ligne sous l'avatar : bloc identité à gauche, icônes + CTA à droite */
+.profil-identite-ligne {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--profil-gap-m);
+
+  width: 100%;
+  margin-top: var(--profil-gap-l);
+}
+
+.profil-identite-infos {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  flex: 1 1 200px;
+}
+
+.profil-nom {
+  font-size: clamp(1.35rem, 1.05rem + 1.3vw, 1.75rem);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  color: var(--profil-color-text);
+}
+
+/* "Senior UI & UX Designer" -> violet vif, mesuré sur la maquette */
+.profil-titre {
+  font-size: clamp(1rem, 0.9rem + 0.5vw, 1.15rem);
+  font-weight: 400;
+  color: var(--profil-color-role);
+}
+
+.profil-lieu {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: var(--profil-color-text-muted);
+}
+
+/* --- Effet "machine à écrire" sur la suite de l'adresse ---
+   "Comè, Bénin" reste statique (déjà affiché), et le reste de l'adresse
+   (ex. ", Rue Amoussouvi") s'écrit lettre par lettre en JS via banniere.js,
+   qui remplit progressivement .profil-lieu-suite. Le curseur clignote
+   pendant l'écriture puis s'efface une fois le texte complet affiché. */
+.profil-lieu-texte {
+  display: inline-flex;
+  align-items: center;
+}
+
+.profil-lieu-curseur {
+  display: inline-block;
+  width: 1px;
+  height: 0.95em;
+  margin-left: 2px;
+  background-color: var(--profil-color-text-muted);
+  animation: profil-lieu-clignote 0.8s step-end infinite;
+}
+
+.profil-lieu-curseur.est-termine {
+  animation: none;
+  opacity: 0;
+}
+
+@keyframes profil-lieu-clignote {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .profil-lieu-curseur {
+    animation: none;
+    opacity: 0;
+  }
+}
+
+.profil-actions {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  /* Desktop : icônes réseaux et bouton de contact groupés côte à côte,
+     alignés à droite (comportement par défaut, "mobile-first" inversé —
+     ce fichier documente ses breakpoints en max-width, cf. responsive.css).
+     Sur mobile, ce groupe est réécarté en space-between, cf. responsive.css. */
+  justify-content: flex-end;
+  gap: var(--profil-gap-m);
+
+  flex: 1 1 240px;
+}
+
+.profil-reseaux {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--profil-gap-s);
+
+  list-style: none;
+}
+
+.profil-reseaux li {
+  display: flex;
+}
+
+.profil-reseaux a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--profil-color-border-strong);
+  background: #ffffff;
+  color: var(--profil-color-text-secondary);
+
+  transition:
+    background-color var(--motion-duration-fast) var(--motion-ease-standard),
+    border-color var(--motion-duration-fast) var(--motion-ease-standard),
+    color var(--motion-duration-fast) var(--motion-ease-standard),
+    transform var(--motion-duration-fast) var(--motion-ease-standard);
+}
+
+.profil-reseaux a:hover {
+  background: var(--profil-color-pill-bg);
+  color: var(--profil-color-text);
+  transform: translateY(-2px);
+}
+
+.profil-reseaux a:active {
+  transform: translateY(0) scale(0.94);
+}
+
+.profil-reseaux svg {
+  width: 17px;
+  height: 17px;
+  transition: transform var(--motion-duration-fast) var(--motion-ease-standard);
+}
+
+.profil-reseaux a:hover svg {
+  transform: rotate(-8deg) scale(1.08);
+}
+
+.profil-btn-contact {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+
+  min-height: 44px;
+  padding: 8px 20px;
+  border-radius: var(--profil-radius-pill);
+  border: none;
+  box-shadow: 0 0 0 rgba(30, 33, 31, 0);
+
+  font-size: 0.95rem;
+  font-weight: 500;
+  white-space: nowrap;
+  text-decoration: none;
+
+  background: var(--profil-color-cta-bg);
+  color: var(--profil-color-cta-text);
+
+  transition:
+    background-color var(--motion-duration-fast) var(--motion-ease-standard),
+    box-shadow var(--motion-duration-fast) var(--motion-ease-standard),
+    transform var(--motion-duration-fast) var(--motion-ease-standard);
+}
+
+.profil-btn-contact:hover {
+  background: var(--profil-color-cta-bg-hover);
+}
+
+.profil-btn-contact:active {
+  transform: scale(0.98);
+}
+
+.profil-btn-contact i {
+  color: var(--profil-color-cta-text);
+  transition: transform var(--motion-duration-fast) var(--motion-ease-standard);
+}
+
+.profil-btn-contact:hover i {
+  transform: rotate(-8deg) scale(1.08);
+}
+
+/* --- Motion : entrée de l'avatar en scale-in plutôt qu'en translation,
+   pour un effet "portrait qui se révèle" différent du reste de la page --- */
+.profil-avatar-wrap {
+  --motion-y: 0;
+  --motion-scale: 0.92;
+}
+
+/* Photo de couverture : léger zoom-out ("Ken Burns" discret) plutôt qu'une
+   translation, pour ouvrir la page sans à-coup. */
+.profil-banniere-img {
+  --motion-y: 0;
+  --motion-scale: 1.045;
+}
+
+/* Nom, profession et lieu : entrée en cascade avec un déplacement un peu
+   plus prononcé que le reste du site, pour bien marquer l'identité au
+   chargement de la page. */
+.profil-nom,
+.profil-titre,
+.profil-lieu {
+  --motion-y: 12px;
+}
+
+/* --- Motion : reveal plus lent que le reste du site sur la bannière (hero) ---
+   La section hero est la première chose vue au chargement : on prend le
+   temps d'un déroulé plus posé (durée + décalage entre éléments plus
+   généreux) plutôt que la cadence standard utilisée ailleurs sur la page. */
+.profil-banniere {
+  --motion-duration-enter: 950ms;
+  --motion-stagger-step: 220ms;
+}

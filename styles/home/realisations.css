@@ -1,0 +1,78 @@
+/* =========================================================================
+   REALISATIONS.CSS — section "Réalisations / Projets annexes"
+   ========================================================================= */
+
+.profil-etudes-projets {
+  flex-direction: row !important; /* surcharge la colonne par défaut de .profil-bloc */
+  flex-wrap: wrap;
+  gap: var(--profil-gap-l);
+}
+
+.profil-etudes-projets-colonne {
+  display: flex;
+  flex-direction: column;
+  gap: var(--profil-gap-m);
+
+  flex: 1 1 160px;
+}
+
+.profil-liens-projets {
+  display: flex;
+  flex-direction: column;
+  gap: var(--profil-gap-s);
+
+  list-style: none;
+}
+
+.profil-liens-projets li {
+  display: flex;
+}
+
+/* Liens actifs (Réalisations, Formless) -> bleu, mesuré sur la maquette */
+.profil-liens-projets a {
+  color: var(--profil-color-link);
+  font-weight: 500;
+  transition:
+    color var(--motion-duration-fast) var(--motion-ease-standard),
+    transform var(--motion-duration-fast) var(--motion-ease-standard);
+}
+
+.profil-liens-projets a:hover {
+  text-decoration: underline;
+  transform: translateX(2px);
+}
+
+/* Projets annexes "à venir" -> ambre, mesuré sur la maquette */
+.profil-liens-projets li > span {
+  color: var(--profil-color-soon);
+  font-weight: 400;
+}
+
+.profil-liens-projets a,
+.profil-liens-projets li > span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  font-size: 0.95rem;
+  text-decoration: none;
+}
+
+.profil-liens-projets a i {
+  font-size: 0.8rem;
+}
+
+.profil-badge-bientot {
+  display: inline-flex;
+  align-items: center;
+
+  padding: 2px 9px;
+  border-radius: var(--profil-radius-pill);
+  border: none;
+  background: var(--profil-color-pill-bg);
+  color: var(--profil-color-text-secondary);
+
+  font-size: 0.75rem;
+  font-weight: 500;
+  white-space: nowrap;
+}

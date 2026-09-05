@@ -1,0 +1,25 @@
+/* =========================================================================
+   HEADER.CSS — en-tête du site (logo, barre fixe)
+   ========================================================================= */
+
+header {
+  background-color: var(--background-white);
+  border-bottom: 2px solid #ddd;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+.navbar .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 15px 0;
+}
+
+.logo img {
+  height: 50px;
+}

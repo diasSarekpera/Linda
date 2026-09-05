@@ -1,0 +1,28 @@
+/* =========================================================================
+   MAIN.CSS — point d'entrée CSS de la page Home
+   Ce fichier n'importe que : index.html ne charge que ce seul fichier.
+   ========================================================================= */
+
+/* --- Polices --- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Montserrat:wght@400;500;600&display=swap');
+
+/* --- Base commune à tout le site --- */
+@import url('../base/variables.css');
+@import url('../base/reset.css');
+@import url('../base/typography.css');
+@import url('../base/global.css');
+@import url('../base/motion.css');
+
+/* --- Sections de la page Home, dans l'ordre d'apparition --- */
+@import url('./carte.css');
+@import url('./banniere.css');
+@import url('./apropos.css');
+@import url('./projets-phares.css');
+@import url('./experience.css');
+@import url('./formation.css');
+@import url('./langues.css');
+@import url('./references.css');
+@import url('./footer.css');
+
+/* --- Garde-fou responsive, importé en dernier pour primer sur les sections --- */
+@import url('./responsive.css');

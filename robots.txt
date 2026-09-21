@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://linda-9193.onrender.com/sitemap.xml
